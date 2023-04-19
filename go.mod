@@ -1,3 +1,3 @@
-module github.com/uia-worker/is105sem03
+module github.com/issaalmusawi/repo3-crypt
 
-go 1.19
+go 1.20

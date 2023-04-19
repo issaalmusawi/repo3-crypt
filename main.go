@@ -2,19 +2,28 @@ package main
 
 import (
 	"fmt"
-	"github.com/uia-worker/is105sem03/mycrypt"
+
+	"github.com/issaalmusawi/repo3-crypt/mycrypt"
 )
 
 func main() {
+	input := []rune("Kjevik;SN39040;18.03.2022 01:50;6")
 
-    kryptertRune := mycrypt.Krypter([]rune("Kjevik;SN39040;18.03.2022 01:50;6"), mycrypt.ALF_SEM03, 4)
-    kryptertString := string(kryptertRune)
-    fmt.Println(kryptertString)
-  
-    alfLength := len(mycrypt.ALF_SEM03)
- 
-    dekryptertRune := mycrypt.Krypter(kryptertRune, mycrypt.ALF_SEM03, alfLength-4)
-    dekryptertString := string(dekryptertRune)
-    fmt.Println(dekryptertString)
+	kryptertRune, err := mycrypt.Krypter(input, 4)
+	if err != nil {
+		fmt.Println("Krypter error:", err)
+		return
+	}
+	kryptertString := string(kryptertRune)
+	fmt.Println(kryptertString)
 
+	alfLength := len(mycrypt.ALF_SEM03)
+
+	dekryptertRune, err := mycrypt.Krypter(kryptertRune, alfLength-4)
+	if err != nil {
+		fmt.Println("Dekrypter error:", err)
+		return
+	}
+	dekryptertString := string(dekryptertRune)
+	fmt.Println(dekryptertString)
 }
