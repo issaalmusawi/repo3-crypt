@@ -4,7 +4,7 @@ import (
 	"fmt"
 )
 
-var ALF_SEM03 []rune = []rune("abcdefghijklmnopqrstuvwxyzæøå0123456789.,:; ")
+var ALF_SEM03 []rune = []rune("abcdefghijklmnopqrstuvwxyzæøå0123456789.,:; KSN")
 
 func Krypter(inputMessage []rune, chiffer int) ([]rune, error) {
 	result := make([]rune, len(inputMessage))
