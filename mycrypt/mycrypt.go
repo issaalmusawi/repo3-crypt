@@ -7,7 +7,11 @@ import (
 var ALF_SEM03 []rune = []rune("abcdefghijklmnopqrstuvwxyzæøå0123456789.,:; KSN")
 
 func Krypter(inputMessage []rune, chiffer int) ([]rune, error) {
-	result := make([]rune, len(inputMessage))
+		       if len(inputMessage) == 0{
+	return nil, fmt.Errorf("input slice er tom")
+	}
+
+	result := make([]rune, len(inputMessage)+1)
 	alfLength := len(ALF_SEM03)
 	for i, r := range inputMessage {
 		idx := sokIAlfabetet(r, ALF_SEM03)
@@ -15,7 +19,7 @@ func Krypter(inputMessage []rune, chiffer int) ([]rune, error) {
 			return nil, fmt.Errorf("invalid character: '%c'", r)
 		}
 		nyttIndeks := (idx + chiffer%alfLength + alfLength) % alfLength
-		result[i] = ALF_SEM03[nyttIndeks]
+		result[len(inputMessage)] = '\x00'
 	}
 	return result, nil
 }
