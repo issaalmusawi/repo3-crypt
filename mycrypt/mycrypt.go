@@ -8,12 +8,13 @@ var ALF_SEM03 []rune = []rune("abcdefghijklmnopqrstuvwxyzæøå0123456789.,:; KS
 
 func Krypter(inputMessage []rune, chiffer int) ([]rune, error) {
 	result := make([]rune, len(inputMessage))
+	alfLength := len(ALF_SEM03)
 	for i, r := range inputMessage {
 		idx := sokIAlfabetet(r, ALF_SEM03)
 		if idx == -1 {
 			return nil, fmt.Errorf("invalid character: '%c'", r)
 		}
-		nyttIndeks := (idx + chiffer) % len(ALF_SEM03)
+		nyttIndeks := (idx + chiffer%alfLength + alfLength) ) % alfLength
 		result[i] = ALF_SEM03[nyttIndeks]
 	}
 	return result, nil
