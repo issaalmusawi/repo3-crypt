@@ -14,7 +14,7 @@ func Krypter(inputMessage []rune, chiffer int) ([]rune, error) {
 		if idx == -1 {
 			return nil, fmt.Errorf("invalid character: '%c'", r)
 		}
-		nyttIndeks := (idx + chiffer%alfLength + alfLength) ) % alfLength
+		nyttIndeks := (idx + chiffer%alfLength + alfLength) % alfLength
 		result[i] = ALF_SEM03[nyttIndeks]
 	}
 	return result, nil
